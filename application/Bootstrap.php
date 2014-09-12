@@ -71,5 +71,30 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         return $view;
     }
 
+       protected function _initAutoLoadModuleAdmin()
+    {
+        $autoloader = new Zend_Application_Module_AutoLoader(
+                array(
+            'namespace' => 'Admin',
+            'basePath' => APPLICATION_PATH . '.modules/admin',
+                )
+        );
+
+        return $autoloader;
+    }
+
+    protected function _initAutoLoadModuleDefault()
+    {
+        $autoLoader = new Zend_Application_Module_Autoloader(
+                array(
+            'namespace' => 'Webdesignerjun',
+            'basePath' => dirname(__FILE__),
+                )
+        );
+
+        return $autoLoader;
+    }
+
+
 }
 
