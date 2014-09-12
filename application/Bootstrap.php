@@ -11,12 +11,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $config = new Zend_Config($this->getOptions());
         Zend_Registry::set('config', $config);
         Application_Model_Logger::log('_initRegistry');
-
-		// ob_start();
-		// var_dump($config);
-		// $output = ob_get_clean();
-		// $output = preg_replace("/\]\=\>\n(\s+)/m", "] => ", $output);
-		// Application_Model_Logger::log('output: '.$output);
         // $resource = $this->getPluginResource('db');
         // $db = $resource->getDbAdapter();
         // $db->setFetchMode(Zend_Db::FETCH_ASSOC);
@@ -71,18 +65,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         return $view;
     }
 
-       protected function _initAutoLoadModuleAdmin()
-    {
-        $autoloader = new Zend_Application_Module_AutoLoader(
-                array(
-            'namespace' => 'Admin',
-            'basePath' => APPLICATION_PATH . '.modules/admin',
-                )
-        );
-
-        return $autoloader;
-    }
-
     protected function _initAutoLoadModuleDefault()
     {
         $autoLoader = new Zend_Application_Module_Autoloader(
@@ -94,6 +76,17 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
         return $autoLoader;
     }
+
+    protected function _initResourceAutoloader()
+	{
+	     $autoloader = new Zend_Loader_Autoloader_Resource(array(
+	        'basePath'  => APPLICATION_PATH,
+	        'namespace' => 'Application',
+	     ));
+
+	     $autoloader->addResourceType( 'model', 'models', 'Model');
+	     return $autoloader;
+	}
 
 
 }
