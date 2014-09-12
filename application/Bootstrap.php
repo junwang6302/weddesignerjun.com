@@ -69,7 +69,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
     {
         $autoLoader = new Zend_Application_Module_Autoloader(
                 array(
-            'namespace' => 'Webdesignerjun',
+            'namespace' => 'Application',
             'basePath' => dirname(__FILE__),
                 )
         );
