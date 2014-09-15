@@ -10,7 +10,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
     {
         $config = new Zend_Config($this->getOptions());
         Zend_Registry::set('config', $config);
-        // Application_Model_Logger::log('_initRegistry');
+        Application_Model_Logger::log('_initRegistry' .APPLICATION_PATH);
         // $resource = $this->getPluginResource('db');
         // $db = $resource->getDbAdapter();
         // $db->setFetchMode(Zend_Db::FETCH_ASSOC);
@@ -88,11 +88,11 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
 	     $autoloader->addResourceTypes(array(
 		     'model' => array(
-		         'path'      => APPLICATION_PATH.'models',
+		         'path'      => APPLICATION_PATH.'/models',
 		         'namespace' => 'Model',
 		     ),
 		     'form' => array(
-		         'path'      => APPLICATION_PATH.'forms',
+		         'path'      => APPLICATION_PATH.'/forms',
 		         'namespace' => 'Form',
 		     ),
 		 ));
