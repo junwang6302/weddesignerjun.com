@@ -65,17 +65,17 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         return $view;
     }
 
-    protected function _initAutoLoadModuleDefault()
-    {
-        $autoLoader = new Zend_Application_Module_Autoloader(
-                array(
-            'namespace' => 'Application',
-            'basePath' => dirname(__FILE__),
-                )
-        );
+    // protected function _initAutoLoadModuleDefault()
+    // {
+    //     $autoLoader = new Zend_Application_Module_Autoloader(
+    //             array(
+    //         'namespace' => 'Application',
+    //         'basePath' => dirname(__FILE__),
+    //             )
+    //     );
 
-        return $autoLoader;
-    }
+    //     return $autoLoader;
+    // }
 
     protected function _initResourceAutoloader()
 	{
@@ -84,7 +84,19 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	        'namespace' => 'Application',
 	     ));
 
-	     $autoloader->addResourceType( 'model', 'models', 'Model');
+	     // $autoloader->addResourceType( 'model', 'models', 'Model');
+
+	     $autoloader->addResourceTypes(array(
+		     'model' => array(
+		         'path'      => APPLICATION_PATH.'models',
+		         'namespace' => 'Model',
+		     ),
+		     'form' => array(
+		         'path'      => APPLICATION_PATH.'forms',
+		         'namespace' => 'Form',
+		     ),
+		 ));
+
 	     return $autoloader;
 	}
 
