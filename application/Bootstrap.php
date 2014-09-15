@@ -5,6 +5,29 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 {
 
 	# -------
+	protected function _initResourceAutoloader()
+	{
+	     $autoloader = new Zend_Loader_Autoloader_Resource(array(
+	        'basePath'  => APPLICATION_PATH,
+	        'namespace' => 'Application',
+	     ));
+
+	     // $autoloader->addResourceType( 'model', 'models', 'Model');
+
+	     $autoloader->addResourceTypes(array(
+		     'model' => array(
+		         'path'      => 'models',
+		         'namespace' => 'Model',
+		     ),
+		     'form' => array(
+		         'path'      => 'forms',
+		         'namespace' => 'Form',
+		     ),
+		 ));
+
+	     return $autoloader;
+	}
+	# -------
 
     protected function _initRegistry()
     {
@@ -77,28 +100,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
     //     return $autoLoader;
     // }
 
-    protected function _initResourceAutoloader()
-	{
-	     $autoloader = new Zend_Loader_Autoloader_Resource(array(
-	        'basePath'  => APPLICATION_PATH,
-	        'namespace' => 'Application',
-	     ));
-
-	     // $autoloader->addResourceType( 'model', 'models', 'Model');
-
-	     $autoloader->addResourceTypes(array(
-		     'model' => array(
-		         'path'      => 'models',
-		         'namespace' => 'Model',
-		     ),
-		     'form' => array(
-		         'path'      => 'forms',
-		         'namespace' => 'Form',
-		     ),
-		 ));
-
-	     return $autoloader;
-	}
+    
 
 
 }
