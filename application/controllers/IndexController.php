@@ -15,7 +15,7 @@ class IndexController extends Zend_Controller_Action
 
     public function tasklistAction()
     {
-    	Application_Model_Logger::log('tasklistAction');
+    	// Application_Model_Logger::log('tasklistAction');
         // action body
     }
 
