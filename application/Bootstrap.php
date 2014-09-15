@@ -88,11 +88,11 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
 	     $autoloader->addResourceTypes(array(
 		     'model' => array(
-		         'path'      => APPLICATION_PATH.'/models',
+		         'path'      => 'models',
 		         'namespace' => 'Model',
 		     ),
 		     'form' => array(
-		         'path'      => APPLICATION_PATH.'/forms',
+		         'path'      => 'forms',
 		         'namespace' => 'Form',
 		     ),
 		 ));
