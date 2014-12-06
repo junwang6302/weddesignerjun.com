@@ -45,7 +45,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
     {
     	$this->bootstrap('frontController');
         $config = new Zend_Config($this->getOptions());
-        // Application_Model_Logger::log('_initRoutes');
+        Application_Model_Logger::log('_initRoutes');
         
         //GET MOBILE USER AGENT -J
         // $mobileBrowsers = array('iPhone', 'Android', 'webOS', 'BlackBerry', 'iPod');
@@ -66,7 +66,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
 	protected function _initView()
     {
-    	// Application_Model_Logger::log('_initView');
+    	Application_Model_Logger::log('_initView');
     	// Initialize view
         $view = new Zend_View();
         $view->headTitle('Webdesignerjun');
