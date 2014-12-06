@@ -21,7 +21,7 @@ class Application_Model_Logger {
 		// 		error_log(date('Y-m-d H:i:s') . "\t\t" . $message . "\n", 3, realpath('..') . '/userlog/not-logged-in-' . date('Ymd') . '.log');			
 		// }
 		if (strlen($message) > 0){
-			error_log(date('Y-m-d H:i:s') . "\t\t" . $message . "\n", 3, realpath('..') . 'not-logged-in-' . date('Ymd') . '.log');
+			error_log(date('Y-m-d H:i:s') . "\t\t" . $message . "\n", 3, realpath('..') . '/userlog/not-logged-in-' . date('Ymd') . '.log');
 	    }
     }
 }
