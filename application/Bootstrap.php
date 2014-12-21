@@ -12,8 +12,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 	        'namespace' => 'Application',
 	     ));
 
-	     // $autoloader->addResourceType( 'model', 'models', 'Model');
-
 	     $autoloader->addResourceTypes(array(
 		     'model' => array(
 		         'path'      => 'models',
@@ -60,7 +58,9 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         // }
 
         $router = $this->frontController->getRouter();
+        $router->addRoute('main', new Zend_Controller_Router_Route('main/', array('controller' => 'index', 'action' => 'main')));
         $router->addRoute('tasklist', new Zend_Controller_Router_Route('tasklist/', array('controller' => 'index', 'action' => 'tasklist')));
+        
     }
 
 
@@ -87,21 +87,5 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         // Return it, so that it can be stored by the bootstrap
         return $view;
     }
-
-    // protected function _initAutoLoadModuleDefault()
-    // {
-    //     $autoLoader = new Zend_Application_Module_Autoloader(
-    //             array(
-    //         'namespace' => 'Application',
-    //         'basePath' => dirname(__FILE__),
-    //             )
-    //     );
-
-    //     return $autoLoader;
-    // }
-
-    
-
-
 }
 

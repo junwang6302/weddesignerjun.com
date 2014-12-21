@@ -19,6 +19,11 @@ class IndexController extends Zend_Controller_Action
         // action body
     }
 
+    public function mainAction()
+    {
+        Application_Model_Logger::log('mainAction');
+        // action body
+    }
 
 
 }
