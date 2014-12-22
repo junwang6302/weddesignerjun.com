@@ -2291,9 +2291,11 @@ a
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: auto 100%;
+	background-color: #F8981D;
 }
 .myWork .moreWork .aws:hover{
 	background-image: url(/img/amazon-aws_1.gif);
+	background-color: #fff;
 }
 .myWork .moreWork .zend{
 	width: 100%;
@@ -2306,9 +2308,11 @@ a
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: auto 100%;
+	background-color: #00AC00;
 }
 .myWork .moreWork .zend:hover{
 	background-image: url(/img/zend_1.png);
+	background-color: #3FC000;
 }
 .myWork .moreWork .html5{
 	width: 100%;
@@ -2321,10 +2325,12 @@ a
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: auto 100%;
+	background-color: #E54D26;
 }
 .myWork .moreWork .html5:hover{
 	background-image: url(/img/html5_1.png);
 	background-size: 220px 220px;
+	background-color: #fff;
 }
 .myWork .moreWork .js{
 	width: 100%;
@@ -2337,9 +2343,11 @@ a
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: auto 100%;
+	background-color: #322C23;
 }
 .myWork .moreWork .js:hover{
 	background-image: url(/img/js_1.png);
+	background-color: #fff;
 }
 .myWork .getMoreButton
 {
