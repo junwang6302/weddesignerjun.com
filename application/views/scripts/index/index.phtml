@@ -1,162 +1,245 @@
 <!DOCTYPE html>
-<!-- saved from url=(0040)http://alvarotrigo.com/fullPage/#4thpage -->
-<html xmlns="http://www.w3.org/1999/xhtml" style="overflow: hidden; height: 100%;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	
-	<title>J-TEST</title>
-	<meta name="author" content="Alvaro Trigo Lopez">
-	<meta name="description" content="fullPage plugin by Alvaro Trigo. Create fullscreen pages fast and simple. One page scroll jquery plugin like iPhone 5 website.">
-	<meta name="keywords" content="fullpage,jquery,alvaro,trigo,plugin,fullscren,screen,full,iphone5,apple">
-	<meta name="Resource-type" content="Document">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+	<title>Jun Wang — Designer. Developer.</title><meta name="keywords" content=" Designer, Developer, Webdesign, Screendesign, HTML, CSS, WordPress, Portfolio, Sass">
+  <meta name="description" content="This is the portfolio, blog and digital playground from Jun Wang.">
+  <meta name="author" content="Jun Wang - http://www.webdesignerjun.com">
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0,maximum-scale=1.0">
 
-
-	<link rel="stylesheet" type="text/css" href="/css/lib/jquery.fullPage.css">
-	<link rel="stylesheet" type="text/css" href="/css/example3.css">
-
-	<!--[if IE]>
-		<script type="text/javascript">
-			 var console = { log: function() {} };
-		</script>
-	<![endif]-->
-
-	<script id="twitter-wjs" src="/js/lib/widgets.js"></script>
-    <script src="/js/lib/jquery.min.js"></script>
-	<script src="/js/lib/jquery.easings.min.js"></script>
-
-	<script type="text/javascript" src="/js/lib/jquery.fullPage.min.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$('#fullpage').fullpage({
-				sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', 'whitesmoke', '#ccddff'],
-				anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', 'lastPage'],
-				menu: '#menu',
-				css3: true
-			});
-
-			$('#showExamples').click(function(e){
-				e.stopPropagation();
-				e.preventDefault();
-				$('#examplesList').toggle();
-			});
-
-			$('html').click(function(){
-				$('#examplesList').hide();
-			});
-		});
-	</script>
+	<link rel="stylesheet" href="css/mainPage/style.css" type="text/css" media="screen">
+  <script type="text/javascript" src="/js/lib/jquery.min.js"></script>
 
 </head>
-<body data-twttr-rendered="true" style="overflow: hidden; height: 100%; font-size: 79.03%;">
 
-<ul id="menu">
-	<li data-menuanchor="firstPage" class=""><a href="http://alvarotrigo.com/fullPage/#firstPage">First section</a></li>
-	<li data-menuanchor="secondPage" class=""><a href="http://alvarotrigo.com/fullPage/#secondPage">Second section</a></li>
-	<li data-menuanchor="3rdPage" class=""><a href="http://alvarotrigo.com/fullPage/#3rdPage">Third section</a></li>
-	<li data-menuanchor="4thpage" class="active"><a href="/js/lib/fullPage.js One Page Scroll Site Plugin.html">Fourth section</a></li>
-</ul>
-
-<div id="fullpage" class="fullpage-wrapper fp-easing" style="height: 100%; position: relative; -webkit-transform: translate3d(0px, -1956px, 0px); transform: translate3d(0px, -1956px, 0px);">
-
-	<div class="section fp-section fp-table" id="section0" data-anchor="firstPage" style="height: 652px; background-color: rgb(27, 188, 155);"><div class="fp-tableCell" style="height: 652px;">
-		<h1>This is my test!!!!</h1>
-		<h2>Create Beautiful Fullscreen Scrolling Websites</h2>
-		<div id="download"><a href="https://github.com/alvarotrigo/fullpage.js/archive/master.zip">Download</a></div><br>
-		<img src="/img/fullPage.png" alt="fullPage" height="243" width="282">
-		<p id="donations">
-				<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=BEK5JQCQMED4J&lc=GB&item_name=fullPage%2ejs&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted">Donations will be appreciated!</a>
-		</p>
-
-
-	</div></div>
-	<div class="section fp-section" id="section1" data-anchor="secondPage" style="height: 652px; background-color: rgb(75, 191, 195);">
-	    <div class="fp-slides"><div class="fp-slidesContainer fp-easing" style="width: 400%; -webkit-transform: translate3d(0px, 0px, 0px); transform: translate3d(0px, 0px, 0px);"><div class="slide active fp-slide fp-table" style="width: 25%;"><div class="fp-tableCell" style="height: 652px;">
-			<div class="intro">
-				<h1>Create Sliders</h1>
-				<p>Not only vertical scrolling but also horizontal scrolling. With fullPage.js you will be able to add horizontal sliders in the most simple way ever.</p>
-				<img src="/img/slider.png" alt="slider" height="132" width="662">
-			</div>
-
-		</div></div><div class="slide fp-slide fp-table" style="width: 25%;"><div class="fp-tableCell" style="height: 652px;">
-			<div class="intro">
-				<img src="/img/1.png" alt="simple" height="176" width="176">
-				<h1>Simple</h1>
-				<p>Easy to use. Configurable and customizable.</p>
-			</div>
-		</div></div><div class="slide fp-slide fp-table" style="width: 25%;"><div class="fp-tableCell" style="height: 652px;">
-			<div class="intro">
-				<img src="/img/2.png" alt="Cool" height="176" width="176">
-				<h1>Cool</h1>
-				<p>It just looks cool. Impress everybody with a simple and modern web design!</p>
-			</div>
-		</div></div><div class="slide fp-slide fp-table" style="width: 25%;"><div class="fp-tableCell" style="height: 652px;">
-			<div class="intro">
-				<img src="/img/3.png" alt="Compatible" height="176" width="176">
-				<h1>Compatible</h1>
-				<p>Working in modern and old browsers too! IE 8 users don't have the fault of using that horrible browser! Lets give them a chance to see your site in a proper way!</p>
-			</div>
-		</div></div></div></div><div class="fp-controlArrow fp-prev"></div><div class="fp-controlArrow fp-next"></div>
-	    
-	    
-	    
-	</div>
-	<div class="section fp-section fp-table" id="section2" data-anchor="3rdPage" style="height: 652px; background-color: rgb(123, 170, 190);"><div class="fp-tableCell" style="height: 652px;">
-		<div class="intro">
-			<h1>Easy to use plugin</h1>
-			<p>HTML markup example to define 4 sections.</p>
-			<img src="/img/example2.png" alt="example" height="154" width="494">
-		</div>
-	</div></div>
-	<div class="section fp-section fp-table active" id="section3" data-anchor="4thpage" style="height: 652px; background-color: rgb(245, 245, 245);"><div class="fp-tableCell" style="height: 652px;">
-		<div class="intro">
-			<h1>Working On Tablets</h1>
-			<p>
-				Designed to fit to different screen sizes as well as tablet and mobile devices.
-				<br><br><br><br><br><br>
-			</p>
-		</div>
-		<img src="/img/tablets.png" alt="tablets" height="372" width="843">
-	</div></div>
+<body id="top">
+<!-- start: Loader -->
+<div class="loadingWrapper" style="top: 100%; display: none; opacity: 0.9;">
+  <div class="loading">
+    <h2>Jun<br>Wang<br></h2>
+    <h3>loading...</h3>
+  </div>
 </div>
+<!-- start: websiteWrapper -->
+<section class="websiteWrapper">
 
-<div id="infoMenu">
-	<ul>
-		<li><a href="https://github.com/alvarotrigo/fullPage.js/archive/master.zip">Download</a></li>
-		<li>
-			<a href="http://alvarotrigo.com/fullPage/#" id="showExamples">Examples</a>
-			<div id="examplesList" style="display: none;">
-				<div class="column">
-					<h3>Navigation</h3>
-					<ul>
-						<li><a href="http://alvarotrigo.com/fullPage/examples/navigationV.html">Vertical navigation dots</a></li>
-						<li><a href="http://alvarotrigo.com/fullPage/examples/navigationH.html">Horizontal navigation dots</a></li>
-						<li><a href="http://alvarotrigo.com/fullPage/examples/normalScroll.html">Normal scrolling</a></li>
-						<li><a href="http://alvarotrigo.com/fullPage/examples/continuous.html">Continuous vertical</a></li>
-						<li><a href="http://alvarotrigo.com/fullPage/examples/noAnchor.html">Without anchor links (same URL)</a></li>
-					</ul>
-				</div>
-				<div class="column">
-					<h3>Design</h3>
-					<ul>
-						<li><a href="http://alvarotrigo.com/fullPage/examples/backgrounds.html">Full backgrounds</a></li>
-						<li><a href="http://alvarotrigo.com/fullPage/examples/videoBackground.html">Full background videos</a></li>
-						<li><a href="http://alvarotrigo.com/fullPage/examples/gradientBackgrounds.html">Gradient backgrounds</a></li>
-						<li><a href="http://alvarotrigo.com/fullPage/examples/scrolling.html">Scrolling inside sections and slides</a></li>
-						<li><a href="http://alvarotrigo.com/fullPage/examples/fixedHeaders.html">Adding fixed header and footer</a></li>
-						<li><a href="http://alvarotrigo.com/fullPage/examples/oneSection.html">One single section</a></li>
-					</ul>
-				</div>
-				<div class="column">
-					<h3>Callbacks</h3>
-					<ul>
-						<li><a href="http://alvarotrigo.com/fullPage/examples/apple.html">Animations on scrolling</a></li>
-					</ul>
-				</div>
-			</div>
+  <!-- start: pageHeader -->
+  <header class="websiteHeader ">
+    <nav class="websiteNav">
+      <h1>
+        <a href="/">Jun Wang</a>
+      </h1>
+      <ul class="prim">
+        <li><a href="/">Work</a></li>
+        <li><a href="/">Blog</a></li>
+        <li><a href="/">About</a></li>
+      </ul>
+      <ul class="sec">
+        <li><a href="mailto:junwang6302@gmail.com" class="js_showContact"><i class="icon icon-bubbles"></i></a></li>
+        <li><a href="/" class="js_showSearch"><i class="icon icon-search"></i></a></li>
+      </ul>
+      <ul class="mobile">
+        <li><a href="/" class="js_showMobileNav"><i class="icon icon-menu"></i></a></li>
+      </ul>
+    </nav>
+  </header>
 
-		</li>
-		<li><a href="https://github.com/alvarotrigo/fullPage.js#fullpagejs">Documentation</a></li>
-		<li><a href="http://alvarotrigo.com/#contact-page">Contact</a></li>
-	</ul>
-</div>
+  <!-- <div class="mobileNavWrapper">
+    <nav class="navi">
+      <ul>
+        <li><a href="/">Work</a></li>
+        <li><a href="/">Blog</a></li>
+        <li><a href="/">About</a></li>
+        <li><a href="mailto:junwang6302@gmail.com" class="js_showContact"><i class="icon icon-bubbles"></i></a></li>
+        <li><a href="/" class="js_showSearch js_hideMobileNav"><i class="icon icon-search"></i></a></li>
+      </ul>
+    </nav>
+  </div> -->
 
+  <section class="welcomeWrapper">
+    <figure style="background-image: url(/img/cute_profile.png);">
+      <figcaption>
+        <h2><span>Designer<br>Developer<br></span></h2>
+        <h3>Hi, I'm Jun Wang, an Ireland based web developer.<br>Who want to make the world slightly better....</h3>
+      </figcaption>
+    </figure>
+    <a href="/" class="scrollDown" id="article">
+      <i class="icon icon-arrow-bottom"></i>Read my Articles
+    </a>
+  </section>
+
+
+  <section class="articleArchiv">
+    <ul class="sameHeight">
+          <li style="height: 474px;">
+        <a href="/" rel="bookmark" title=" Ray-Ban Polarized Tour 2014 — #iampolarized  #polarizedtour2014">
+          <span class="date">30, June 2014</span>
+          <h2>xxxx xxxxx xxxx xxxx xxxxx</h2>
+          <div class="readMore">Read Article<i class="icon icon-arrow-right"></i></div>
+        </a>
+      </li>
+          <li style="height: 474px;">
+        <a href="/" rel="bookmark" title=" CSS Media Queries: Das Problem mit fixen Breakpoints">
+          <span class="date">19, May 2014</span>
+          <h2>xxxx xxxxx xxxx xxxx xxxxx</h2>
+          <div class="readMore">Read Article<i class="icon icon-arrow-right"></i></div>
+        </a>
+      </li>
+          <li style="height: 474px;">
+        <a href="/" rel="bookmark" title=" #changeCGN — Minirampe gegen hässliches Köln!">
+          <span class="date">18, May 2014</span>
+          <h2>xxxx xxxxx xxxx xxxx xxxxx</h2>
+          <div class="readMore">Read Article<i class="icon icon-arrow-right"></i></div>
+        </a>
+      </li>
+          <li style="height: 434px;">
+        <a href="/" title=" dribbble invites zu vergeben!">
+          <span class="date">12, May 2014</span>
+          <h2>xxxx xxxxx xxxx xxxx xxxxx</h2>
+          <div class="readMore">Read Article<i class="icon icon-arrow-right"></i></div>
+        </a>
+      </li>
+          <li style="height: 434px;">
+        <a href="/" title=" AWWWARDS — Honorable Mention">
+          <span class="date">12, May 2014</span>
+          <h2>xxxx xxxxx xxxx xxxx xxxxx</h2>
+          <div class="readMore">Read Article<i class="icon icon-arrow-right"></i></div>
+        </a>
+      </li>
+          <li style="height: 434px;">
+        <a href="/" title=" Peak! Vote for me on AWWWARDS">
+          <span class="date">08, May 2014</span>
+          <h2>xxxx xxxxx xxxx xxxx xxxxx</h2>
+          <div class="readMore">Read Article<i class="icon icon-arrow-right"></i></div>
+        </a>
+      </li>
+            </ul>
+    <a class="getMoreButton" href="/">More Articles</a>
+  </section>
+
+<section class="myWork" id="work">
+  <a href="/" class="scrollDown">
+    <i class="icon icon-arrow-bottom"></i>See my work
+  </a>
+
+  
+    <section class="latestWorkWrapper">
+    <div class="latestWork">
+      <div class="ipad">
+        <div class="homeButton"><span></span></div>
+        <div class="camera"></div>
+        <figure>
+          <a class="link" href="/">
+  		      <!-- <img class="preview" src="/img/tweekaboo_0.jpg" alt="Tweekaboo"> -->
+            <img class="helper" src="/img/tweekaboo_0.jpg" alt="helper">
+  		    </a>
+        </figure>
+      </div>
+      <div class="content">
+        <h2>Tweekaboo</h2>
+        <p>
+          An online Journal / Diary App for modern parents, Tweekaboo makes it easy to record your pregnancy and baby's firsts and milestones. Share photos & videos ...      </p>
+        <div class="colors">
+                    	        		<span class="colorField" style="background: #ebae0c"></span>
+          	        		<span class="colorField" style="background: #f2f2f2"></span>
+          	        		<span class="colorField" style="background: #342514"></span>
+          	        		<span class="colorField" style="background: #90a1ae"></span>
+          	        		<span class="colorField" style="background: #ffffff"></span>
+          	        		<span class="colorField" style="background: #333333"></span>
+          	                  </div>
+
+        <ul class="range">
+          <li>AWS </li><li>PHP Backend Developement</li><li>Frontend Development</li>        </ul>
+        <a class="getMoreButton" href="https://www.tweekaboo.com" title="Home on Earth">View details</a>
+      </div>
+    </div>
+  </section>
+	
+  <section class="moreWork">
+    <ul class="sameHeight">
+                   <li style="height: 502px;">
+        <a href="/">
+          <h2>AWS</h2>
+          <figure>
+            <!-- <img class="preview" src="/img/amazon-aws.png" alt="AWS">
+            <img class="helper" src="/img/amazon-aws.png" alt="helper"> -->
+            <div class="aws">
+            </div>
+          </figure>
+          <div class="readMore">View details<i class="icon icon-arrow-right"></i></div>
+        </a>
+      </li>
+                   <li style="height: 502px;">
+        <a href="/">
+          <h2>PHP ZEND</h2>
+          <figure>
+            <div class="zend">
+            </div>
+          </figure>
+          <div class="readMore">View details<i class="icon icon-arrow-right"></i></div>
+        </a>
+      </li>
+                   <li style="height: 502px;">
+        <a href="/">
+          <h2>HTML 5</h2>
+          <figure>
+            <div class="html5">
+            </div>
+          </figure>
+          <div class="readMore">View details<i class="icon icon-arrow-right"></i></div>
+        </a>
+      </li>
+                   <li style="height: 502px;">
+        <a href="/">
+          <h2>Javascript</h2>
+          <figure>
+            <div class="js">
+            </div>
+          </figure>
+          <div class="readMore">View details<i class="icon icon-arrow-right"></i></div>
+        </a>
+      </li>
+          </ul>
+    <a class="getMoreButton" href="/">See all my Work</a>
+  </section>
+
+</section>
+  <footer class="websiteFooter">
+    <section class="footerContent">
+      <div class="shortInfo">
+        © 2014-2015 Jun Wang<br>
+      </div>
+      <ul class="socialIcons">
+        <li><a href="/"><i class="icon icon-tumblr"></i></a></li>
+        <li><a href="/"><i class="icon icon-dribbble"></i></a></li>
+        <li><a href="/"><i class="icon icon-twitter"></i></a></li>
+        <li><a href="/"><i class="icon icon-instagram"></i></a></li>
+      </ul>
+    </section>
+  </footer>
+</section>
+
+<!-- start: pageHeader Sticky -->
+<header class="websiteHeaderSticky">
+  <nav class="websiteNav">
+    <h1>
+      <a href="/">Jun Wang</a>
+    </h1>
+    <ul class="prim">
+      <li><a href="/">Work</a></li>
+      <li><a href="/">Blog</a></li>
+      <li><a href="/">About</a></li>
+    </ul>
+    <ul class="sec">
+      <li><a href="mailto:junwang6302@gmail.com" class="js_showContact"><i class="icon icon-bubbles"></i></a></li>
+      <li><a href="/" class="js_showSearch"><i class="icon icon-search"></i></a></li>
+    </ul>
+    <ul class="mobile">
+      <li><a href="/" class="js_showMobileNav"><i class="icon icon-menu"></i></a></li>
+    </ul>
+  </nav>
+</header>
+<script type="text/javascript" src="js/mainPage/scripts-ck.js"></script>
 
 </body></html>

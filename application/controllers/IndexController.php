@@ -9,7 +9,8 @@ class IndexController extends Zend_Controller_Action
     }
 
     public function indexAction()
-    {
+    {   
+        Application_Model_Logger::log('tasklistAction');
         // action body
     }
 
@@ -19,11 +20,11 @@ class IndexController extends Zend_Controller_Action
         // action body
     }
 
-    public function mainAction()
-    {
-        Application_Model_Logger::log('mainAction');
-        // action body
-    }
+    // public function mainAction()
+    // {
+    //     Application_Model_Logger::log('mainAction');
+    //     // action body
+    // }
 
 
 }
