@@ -2290,7 +2290,7 @@ a
 	background-image: url(/img/amazon-aws_0.png);
 	background-repeat: no-repeat;
 	background-position: center;
-	background-size: 100% 100%;
+	background-size: auto 100%;
 }
 .myWork .moreWork .aws:hover{
 	background-image: url(/img/amazon-aws_1.gif);
@@ -2305,7 +2305,7 @@ a
 	background-image: url(/img/zend_0.png);
 	background-repeat: no-repeat;
 	background-position: center;
-	background-size: 100% 100%;
+	background-size: auto 100%;
 }
 .myWork .moreWork .zend:hover{
 	background-image: url(/img/zend_1.png);
@@ -2320,7 +2320,7 @@ a
 	background-image: url(/img/html5_0.jpg);
 	background-repeat: no-repeat;
 	background-position: center;
-	background-size: 100% 100%;
+	background-size: auto 100%;
 }
 .myWork .moreWork .html5:hover{
 	background-image: url(/img/html5_1.png);
@@ -2336,7 +2336,7 @@ a
 	background-image: url(/img/js_0.png);
 	background-repeat: no-repeat;
 	background-position: center;
-	background-size: 100% 100%;
+	background-size: auto 100%;
 }
 .myWork .moreWork .js:hover{
 	background-image: url(/img/js_1.png);
