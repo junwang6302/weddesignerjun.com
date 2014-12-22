@@ -2281,8 +2281,8 @@ a
 	border: 2px solid #ccc;
 }
 .myWork .moreWork .aws{
-	width: 262px;
-	height: 262px;
+	width: 100%;
+	min-height: 262px;
 	float: left;
 	margin: 0 0 80px 0;
 	transition: all 0.25s 0s ease;
@@ -2296,8 +2296,8 @@ a
 	background-image: url(/img/amazon-aws_1.gif);
 }
 .myWork .moreWork .zend{
-	width: 262px;
-	height: 262px;
+	width: 100%;
+	min-height: 262px;
 	float: left;
 	margin: 0 0 80px 0;
 	transition: all 0.25s 0s ease;
@@ -2311,8 +2311,8 @@ a
 	background-image: url(/img/zend_1.png);
 }
 .myWork .moreWork .html5{
-	width: 262px;
-	height: 262px;
+	width: 100%;
+	min-height: 262px;
 	float: left;
 	margin: 0 0 80px 0;
 	transition: all 0.25s 0s ease;
@@ -2327,8 +2327,8 @@ a
 	background-size: 220px 220px;
 }
 .myWork .moreWork .js{
-	width: 262px;
-	height: 262px;
+	width: 100%;
+	min-height: 262px;
 	float: left;
 	margin: 0 0 80px 0;
 	transition: all 0.25s 0s ease;
