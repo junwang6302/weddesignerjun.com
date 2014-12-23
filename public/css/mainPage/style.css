@@ -652,6 +652,10 @@ a
 {
 	background: none;
 }
+.websiteHeader .websiteNav .sec .mail{
+	width: 30px;
+	vertical-align: middle;
+}
 .websiteHeader .websiteNav ul.prim,.websiteHeader .websiteNav ul.sec,.websiteHeader .websiteNav ul.mobile
 {
 	float: left;
@@ -764,6 +768,10 @@ a
 .websiteHeaderSticky .websiteNav h1 a:hover
 {
 	background: none;
+}
+.websiteHeaderSticky .websiteNav .mail{
+	width: 30px;
+	vertical-align: middle;
 }
 .websiteHeaderSticky .websiteNav ul.prim,.websiteHeaderSticky .websiteNav ul.sec,.websiteHeaderSticky .websiteNav ul.mobile
 {
@@ -1227,6 +1235,10 @@ a
 {
 	border: 2px solid #384452;
 }
+.welcomeWrapper .scrollDown:hover .down-arrow
+{
+	color:  #384452;
+}
 .articleArchiv
 {
 	/*background: #ff7a8f;*/
@@ -1403,7 +1415,7 @@ a
 }
 .articleArchiv .getMoreButton
 {
-	background: #384452;
+	background: #ff7a8f;
 	border-radius: 40px;
 	color: #fff;
 	display: inline-block;
@@ -1420,7 +1432,7 @@ a
 }
 .articleArchiv .getMoreButton:hover
 {
-	background: #272f38;
+	background: #384452;
 }
 .articleArchiv .scrollDown
 {
@@ -1831,6 +1843,10 @@ a
 .myWork .scrollDown:hover .icon
 {
 	border: 2px solid #384452;
+}
+.myWork .scrollDown:hover .down-arrow
+{
+	color: #384452;
 }
 .myWork .latestWorkWrapper
 {
@@ -2351,7 +2367,7 @@ a
 }
 .myWork .getMoreButton
 {
-	background: #384452;
+	background: #ff7a8f;
 	border-radius: 40px;
 	color: #fff;
 	display: inline-block;
@@ -2368,7 +2384,7 @@ a
 }
 .myWork .getMoreButton:hover
 {
-	background: #ff7a8f;
+	background: #384452;
 }
 .articleArchivList
 {
@@ -3377,4 +3393,7 @@ a
 .aboutWrapper .likes p a:hover
 {
 	border-bottom: 2px solid #fff;
+}
+.down-arrow{
+	color:#ccc;
 }
