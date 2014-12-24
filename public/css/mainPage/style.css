@@ -915,10 +915,9 @@ a
 }
 .mobileNavWrapper
 {	
-	display: none;
 	background: #272f38;
 	box-sizing: content-box;
-	display: block;
+	display: none;
 	height: 100%;
 	moz-box-sizing: content-box;
 	ms-transform: translate(0, -127%);
