@@ -23,6 +23,7 @@ $(document).ready(function() {
             $(".searchInput").focus()
         })
     }), $(".js_showMobileNav").on("click", function(e) {
+    	console.log('js_showMobileNav click');
         $("body").toggleClass("js_mobileNavOpen"), $(".websiteHeader").toggleClass("darken"), $(".js_searchBox").hasClass("js_searchBoxAktiv") && $(".js_searchBox").toggleClass("js_searchBoxAktiv")
     }), $(".js_hideMobileNav").on("click", function(e) {
         $("body").removeClass("js_mobileNavOpen")
