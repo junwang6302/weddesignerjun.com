@@ -32,10 +32,13 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $config = new Zend_Config($this->getOptions());
         Zend_Registry::set('config', $config);
         Application_Model_Logger::log('_initRegistry' .APPLICATION_PATH);
-        // $resource = $this->getPluginResource('db');
-        // $db = $resource->getDbAdapter();
-        // $db->setFetchMode(Zend_Db::FETCH_ASSOC);
-        // Zend_Registry::set('db', $db);
+        
+        $resource = $this->getPluginResource('db');
+
+        $db = $resource->getDbAdapter();
+        $db->setFetchMode(Zend_Db::FETCH_ASSOC);
+        Zend_Registry::set('db', $db);
+
     }
 
 
