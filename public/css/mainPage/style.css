@@ -629,6 +629,7 @@ a
 	padding: 0 15px;
 	transition: all 0.5s 0s ease;
 	webkit-transition: all 0.5s 0s ease;
+	height: 60px;
 }
 .websiteHeader .websiteNav a:hover
 {
@@ -746,7 +747,7 @@ a
 	padding: 0 15px;
 	transition: all 0.5s 0s ease;
 	webkit-transition: all 0.5s 0s ease;
-	height: 63px;
+	height: 60px;
 }
 .websiteHeaderSticky .websiteNav a:hover
 {
