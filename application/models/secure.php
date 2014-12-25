@@ -16,19 +16,10 @@ class Application_Model_Secure{
 	public function getUserById($userId){
 
 		$res = array();
-		 Application_Model_Logger::log('br 1'.$userId);
 		$stmt = $this->_db->query('SELECT * FROM user WHERE id = ?', array($userId));
 		
-		 Application_Model_Logger::log('br 2');
 		if ($stmt->rowCount() == 1) {
 			$row = $stmt->fetch();
-			
-			ob_start();
-			var_dump($row);
-			$output = ob_get_clean();
-			$output = preg_replace("/\]\=\>\n(\s+)/m", "] => ", $output);
-			Application_Model_Logger::log('getUserById: '.$userId.' \n'. $output);
-
 			$res = array(
 						'user' => $row,
 						'status' => true
