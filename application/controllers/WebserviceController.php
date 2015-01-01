@@ -14,6 +14,12 @@ class WebserviceController extends Zend_Controller_Action {
 
         $this->request = $this->getRequest();
 
+        ob_start();
+        var_dump( $this->request);
+        $output = ob_get_clean();
+        $output = preg_replace("/\]\=\>\n(\s+)/m", "] => ", $output);
+        Application_Model_Logger::log('request: '.$output);
+
         $hash =  $this->request->getParam ( 'hash' );
         //CHECK HASH HERE-J
 
