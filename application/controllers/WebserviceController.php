@@ -98,9 +98,9 @@ class WebserviceController extends Zend_Controller_Action {
         } else if($this->request->isGet()){
             
         } else if($this->request->isPost()){
-            $date = $this->request->getParam ( 'date' );
-            // if (empty($this->request->getParam ( 'date' ))){
-            if (empty($date)){
+            // $date = $this->request->getParam ( 'date' );
+            if (empty($this->request->getParam ( 'date' ))){
+            // if (empty($date)){
                 $date = date('Y-m-d H:i:s');
             }else{
                 $date = date('Y-m-d H:i:s',$this->request->getParam ( 'date' ));
