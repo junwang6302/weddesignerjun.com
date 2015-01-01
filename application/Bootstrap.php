@@ -64,10 +64,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $router = $this->frontController->getRouter();
         $router->addRoute('main', new Zend_Controller_Router_Route('main/', array('controller' => 'index', 'action' => 'main')));
         $router->addRoute('tasklist', new Zend_Controller_Router_Route('tasklist/', array('controller' => 'index', 'action' => 'tasklist')));
-        
-
-
-        $router->addRoute('WS01', new Zend_Controller_Router_Route('/webservice/addarticle', array('controller' => 'webservice', 'action' => 'addarticle')));
+        $router->addRoute('WS01', new Zend_Controller_Router_Route('/webservice/article', array('controller' => 'webservice', 'action' => 'article')));
     }
 
 
@@ -95,6 +92,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         return $view;
     }
 
-      
+
 }
 
