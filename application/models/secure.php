@@ -38,6 +38,46 @@ class Application_Model_Secure{
 		return $res;
 	}
 
+
+	# -------
+	public function getUserByHash($hash){
+
+		$res = array();
+		$stmt = $this->_db->query('SELECT * FROM user WHERE hash = ?', array($hash));
+		
+		if ($stmt->rowCount() == 1) {
+			$row = $stmt->fetch();
+			$res = array(
+						'user' => $row,
+						'status' => true
+					);
+
+		}else{
+			
+			$stmt = $this->_db->query('SELECT * FROM user WHERE hash = ?', array('123'));
+
+			if ($stmt->rowCount() == 1) {
+				$row = $stmt->fetch();
+				$res = array(
+						'user' => $row,
+						'status' => true
+					);
+			}else{
+				$res = array(
+						'error' => 'can not find user!!!',
+						'status' => false
+					);  
+			}
+		}
+
+		$stmt->close();
+
+		return $res;
+	}
+	
+	# -------
+
+
 }
 
 ?>

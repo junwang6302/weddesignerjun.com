@@ -5,17 +5,24 @@ class WebserviceController extends Zend_Controller_Action {
     private $request_data;
     private $res = null;
     private $userId = null;
-    private $emailAddress = null;
+    private $email = null;
     private $secure;  
     
     public function init() {
 
+        include_once('../library/Custom/functions.php');    
 		$this->_helper->viewRenderer->setNoRender();
 
         $this->request = $this->getRequest();
 
-        $hash =  $this->request->getParam ( 'hash' );
-        //CHECK HASH HERE-J
+        // $hash =  $this->request->getParam ( 'hash' );
+
+        $request_data = $this->request->getParams();
+
+        $this->request_data = sanitizeNestedArrays($request_data);
+
+        $this->checkHashAction();
+        // getUserByHash
 
         // if($this->request->isPut()) {
         //     parse_str(file_get_contents("php://input"),$request_data);
@@ -24,8 +31,48 @@ class WebserviceController extends Zend_Controller_Action {
         //     $request_data = $this->request->getParams();
         // }
 
+
     }
 
+    # -------
+    private function checkHashAction() {
+
+        // check if hash was passed with data
+        if (isset($this->request_data['hash'])) {
+            // if so, check if there is a user with that hash
+            $secure = new Application_Model_Secure();
+            if (strlen($this->request_data['hash']) > 0) {
+        
+                $res = $secure->getUserByHash($this->request_data['hash']);
+                ob_start();
+                var_dump($res);
+                $output = ob_get_clean();
+                $output = preg_replace("/\]\=\>\n(\s+)/m", "] => ", $output);
+                Application_Model_Logger::log("getUserByHash:".$output);
+            } else {
+                $res = array('status'=>false);
+            }
+            
+            if ($res['status']) {
+                // hash is ok
+                $this->userId = $res['user']['id'];
+                $this->email = $res['user']['email'];
+            } else {
+                // there is no user with that hash
+                $this->res = array('status'=>false,'error'=>'ERROR WS USER IS NOT LOGGED IN');
+                $this->sendResponse();
+                exit;
+            }
+        } else {
+            // there is no hash in passed data
+            $this->res = array('status'=>false,'error'=>'ERROR WS MISSING USER HASH');
+            //'Missing user hash.');
+            $this->sendResponse();
+            exit;
+        }
+    }
+
+    # -------
     private function sendResponse() {
         if($this->res == null)
             $this->res = array(
@@ -41,17 +88,12 @@ class WebserviceController extends Zend_Controller_Action {
             // remove all elements that are null or empty arrays
             $this->res = self::arrayCleaner($this->res);
             
-            // if(file_exists('../application/languages/'.$this->lang.'/default.mo'))
-            //     $this->translate = new Zend_Translate('gettext','../application/languages/'.$this->lang.'/default.mo',$this->lang);
-            // else
-            //     $this->translate = new Zend_Translate('gettext','../application/languages/en/default.mo','en');
-            
             if(count($this->res)>0)
                 foreach($this->res as $key=>&$res){
                     if(is_array($res)) $res = (object)$res;
 
                     if (in_array($key,array('error','msg'))){
-                        $res = (object)array('code'=>$res,'text'=>$this->translate->_($res));
+                        $res = (object)array('code'=>$res,'text'=>$res);
                     }
                 }
         }
@@ -59,6 +101,7 @@ class WebserviceController extends Zend_Controller_Action {
         echo json_encode($this->res);
     }
 
+    # -------
     private static function arrayCleaner($a) {
         if (is_array($a)) {
             if (count($a) == 0) //if array is empty return null
@@ -88,7 +131,7 @@ class WebserviceController extends Zend_Controller_Action {
         return $a;
     }
 
-
+    # -------
     public function articleAction() {
     	Application_Model_Logger::log('setarticleAction');
         $article = new Application_Model_Article();
@@ -104,7 +147,7 @@ class WebserviceController extends Zend_Controller_Action {
             }else{
                 $date = date('Y-m-d H:i:s',$this->request->getParam ( 'date' ));
             }
-                $res['status'] = $article -> addArticle('1',  $this->request->getParam ( 'subject' ), $this->request->getParam ( 'content' ), $date);
+                $res['status'] = $article -> addArticle($this->userId,  $this->request->getParam ( 'subject' ), $this->request->getParam ( 'content' ), $date);
                 $this->res = $res;
                 ob_start();
                 var_dump($res);
@@ -116,8 +159,8 @@ class WebserviceController extends Zend_Controller_Action {
         } else if($this->request->isPut()){
 
         }
-
 		
     }
+    # -------
 
 }
