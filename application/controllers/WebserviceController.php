@@ -10,6 +10,8 @@ class WebserviceController extends Zend_Controller_Action {
     
     public function init() {
 
+        error_reporting(0);
+        
         include_once('../library/Custom/functions.php');    
 		$this->_helper->viewRenderer->setNoRender();
 
@@ -88,14 +90,14 @@ class WebserviceController extends Zend_Controller_Action {
             // remove all elements that are null or empty arrays
             $this->res = self::arrayCleaner($this->res);
             
-            if(count($this->res)>0)
-                foreach($this->res as $key=>&$res){
-                    if(is_array($res)) $res = (object)$res;
+            // if(count($this->res)>0)
+            //     foreach($this->res as $key=>&$res){
+            //         if(is_array($res)) $res = (object)$res;
 
-                    if (in_array($key,array('error','msg'))){
-                        $res = (object)array('code'=>$res,'text'=>$res);
-                    }
-                }
+            //         if (in_array($key,array('error','msg'))){
+            //             $res = (object)array('code'=>$res,'text'=>$res);
+            //         }
+            //     }
         }
         // return the response
         echo json_encode($this->res);
@@ -141,19 +143,42 @@ class WebserviceController extends Zend_Controller_Action {
         } else if($this->request->isGet()){
             
         } else if($this->request->isPost()){
-            $date = $this->request->getParam ( 'date' );
-            if (empty($date)){
-                $date = date('Y-m-d H:i:s');
+            
+            if (empty($this->request_data['date'])){
+               $this->request_data['date'] = date('Y-m-d H:i:s');
             }else{
-                $date = date('Y-m-d H:i:s',$this->request->getParam ( 'date' ));
+                $this->request_data['date'] = date('Y-m-d H:i:s',$this->request_data['date']);
             }
-                $res['status'] = $article -> addArticle($this->userId,  $this->request->getParam ( 'subject' ), $this->request->getParam ( 'content' ), $date);
+                // $res['status'] = $article -> addArticle($this->userId,  $this->request->getParam ( 'subject' ), $this->request->getParam ( 'content' ), $date);
+
+                //addArticle($userId, $subject, $content, $date=null, $public=false, $articleId=null)
+                if (empty($this->request_data['articleid'])){
+                    $res = $article -> addArticle(
+                        $this->userId,  
+                        $this->request_data['subject'], 
+                        $this->request_data['content'], 
+                        $this->request_data['date'], 
+                        $this->request_data['public']
+                    );
+                }else{
+                    $res = $article -> updateArticle(
+                        $this->userId,  
+                        $this->request_data['subject'], 
+                        $this->request_data['content'], 
+                        $this->request_data['date'], 
+                        $this->request_data['public'],
+                        $this->request_data['articleid']
+                    );
+                }
+               
+                
                 $this->res = $res;
                 ob_start();
                 var_dump($res);
                 $output = ob_get_clean();
                 $output = preg_replace("/\]\=\>\n(\s+)/m", "] => ", $output);
                 Application_Model_Logger::log($output);
+
                 $this->sendResponse();
 
         } else if($this->request->isPut()){
