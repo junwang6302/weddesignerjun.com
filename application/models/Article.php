@@ -181,7 +181,7 @@ class Application_Model_Article{
 
 		try {
 
-			$query = 'SELECT * FROM `article` WHERE `user_id` = ?';
+			$query = 'SELECT * FROM `article` WHERE `id` IS NOT NULL ';
 
 			if (empty($userId)) throw new Exception('USER ID IS EMPTY.');
 			if (empty($limit)) $limit = 6;
@@ -201,22 +201,25 @@ class Application_Model_Article{
 			}
 			
 			if ($permission != 'public') {
-				$query = $query." AND `public` = 0 ";
+				$query = $query." AND `user_id` = $userId ";
+			}else{
+				$query = $query." AND (`public` = 1 OR user_id = $userId) ";
 			}
-
-			// if ($order!='oldest') $order = 'latest';
 			
 			if (empty($contentlimit)) $contentlimit = 200;
-			
+			Application_Model_Logger::log('query: '.$query.' ORDER BY date DESC LIMIT ?;');
 
 			if ($order!='oldest'){
-				// $stmt = $this->_db->query('SELECT * FROM article WHERE user_id = ? ORDER BY date DESC LIMIT ?;', array( $userId, $limit));
-				$stmt = $this->_db->query($query.' ORDER BY date DESC LIMIT ?;', array( $userId, $limit));
+		
+				$stmt = $this->_db->query($query.' ORDER BY date DESC LIMIT ?;', array($limit));
+				Application_Model_Logger::log('query: '.$query.' ORDER BY date DESC LIMIT ?;');
 			}else{
-				// $stmt = $this->_db->query('SELECT * FROM article WHERE user_id = ? LIMIT ?;', array( $userId, $limit));
-				$stmt = $this->_db->query($query.' LIMIT ?;', array( $userId, $limit));
+				
+				$stmt = $this->_db->query($query.' ORDER BY date LIMIT ?;', array($limit));
+				Application_Model_Logger::log('query: '.$query.' ORDER BY date LIMIT ?;');
 			}
-			Application_Model_Logger::log('query: '.$query);
+			
+
 			if ($stmt->rowCount() > 0) {
 				
 				$row = $stmt->fetchAll();
