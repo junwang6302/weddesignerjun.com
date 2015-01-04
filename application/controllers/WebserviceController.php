@@ -135,23 +135,31 @@ class WebserviceController extends Zend_Controller_Action {
 
     # -------
     public function articleAction() {
-    	Application_Model_Logger::log('setarticleAction');
+
+    	Application_Model_Logger::log('articleAction');
+        
         $article = new Application_Model_Article();
 		
         if($this->request->isDelete()){
 
         } else if($this->request->isGet()){
-            
+        
+            $res = $article -> getArticle(
+                $this->userId,  
+                $this->request_data['articleid']
+            );
+
+            $this->res = $res;
+            $this->sendResponse();
+
         } else if($this->request->isPost()){
             
             if (empty($this->request_data['date'])){
-               $this->request_data['date'] = date('Y-m-d H:i:s');
+                $this->request_data['date'] = date('Y-m-d H:i:s');
             }else{
                 $this->request_data['date'] = date('Y-m-d H:i:s',$this->request_data['date']);
             }
-                // $res['status'] = $article -> addArticle($this->userId,  $this->request->getParam ( 'subject' ), $this->request->getParam ( 'content' ), $date);
 
-                //addArticle($userId, $subject, $content, $date=null, $public=false, $articleId=null)
                 if (empty($this->request_data['articleid'])){
                     $res = $article -> addArticle(
                         $this->userId,  
@@ -169,16 +177,9 @@ class WebserviceController extends Zend_Controller_Action {
                         $this->request_data['public'],
                         $this->request_data['articleid']
                     );
-                }
-               
+                }  
                 
                 $this->res = $res;
-                ob_start();
-                var_dump($res);
-                $output = ob_get_clean();
-                $output = preg_replace("/\]\=\>\n(\s+)/m", "] => ", $output);
-                Application_Model_Logger::log($output);
-
                 $this->sendResponse();
 
         } else if($this->request->isPut()){
@@ -186,6 +187,38 @@ class WebserviceController extends Zend_Controller_Action {
         }
 		
     }
+   
     # -------
+    public function getarticlesAction() {
+        
+        Application_Model_Logger::log('getarticlesAction');
+        $article = new Application_Model_Article();
+        
+        if($this->request->isDelete()){
 
+        } else if($this->request->isGet()){
+
+             $res = $article -> getArticles(
+                $this->userId,  
+                $this->request_data['startdate'], 
+                $this->request_data['enddate'], 
+                $this->request_data['limit'], 
+                $this->request_data['contentlimit'],
+                $this->request_data['permission'],
+                $this->request_data['order']
+            );
+            $this->res = $res;
+            $this->sendResponse();
+
+        } else if($this->request->isPost()){
+
+        } else if($this->request->isPut()){
+
+        }
+
+    }
+
+
+    # -------
+    
 }

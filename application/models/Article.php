@@ -126,7 +126,7 @@ class Application_Model_Article{
 					throw new Exception('NO PERMISSION OR DUP ARTICLE.');
 				}
 			}else{
-				throw new Exception('NO PERMISSION TO CHCANGE THIS ARTICLE.');
+				throw new Exception('NO PERMISSION.');
 			}
 
 			$stmt->close();
@@ -139,6 +139,116 @@ class Application_Model_Article{
 		}
 		return $res;
 	}
+
+	# -------
+	public function getArticle($userId, $articleId){
+		
+		$res = array();
+		
+		try {
+			if (empty($userId)) throw new Exception('USER ID IS EMPTY.');
+			if (empty($articleId)) throw new Exception('ARTICLE ID IS EMPTY.');
+
+			$hasArticle = $this -> hasArticle($userId, $articleId);
+			if (!$hasArticle['status']) throw new Exception($hasArticle['error']);
+
+			$stmt = $this->_db->query('SELECT * FROM `article` WHERE `id` = ? AND `user_id` = ? LIMIT 1;', array($articleId, $userId));
+
+			if ($stmt->rowCount() == 1) {
+				$row = $stmt->fetch();
+					$res = array(
+						'article' => $row,
+						'status' => true
+					);
+			}else{
+				throw new Exception('NO ARTICLE FOUND.');
+			}
+
+			$stmt->close();
+
+		} catch (Exception $e) {
+			$res = array(
+				'error' => $e->getMessage(),
+				'status' => false
+			);
+		}
+		return $res;
+	}
+
+	# -------
+	public function getArticles($userId, $startdate, $enddate, $limit, $contentlimit, $permission, $order){
+		$res = array();
+
+		try {
+
+			$query = 'SELECT * FROM `article` WHERE `user_id` = ?';
+
+			if (empty($userId)) throw new Exception('USER ID IS EMPTY.');
+			if (empty($limit)) $limit = 6;
+			
+			if (!empty($startdate)) {
+				$startdate = date('Y-m-d H:i:s', $startdate);
+				$query = $query." AND `date` > `$startdate` ";
+			}
+
+			if (!empty($enddate)) {
+				$enddate = date('Y-m-d H:i:s', $enddate);
+				$query = $query." AND `date` < `$enddate` ";
+			}
+
+			if (empty($permission)) {
+				$permission = 'public';
+			}
+			
+			if ($permission != 'public') {
+				$query = $query." AND `public` = 0 ";
+			}
+
+			// if ($order!='oldest') $order = 'latest';
+			
+			if (empty($contentlimit)) $contentlimit = 200;
+			
+
+			if ($order!='oldest'){
+				// $stmt = $this->_db->query('SELECT * FROM article WHERE user_id = ? ORDER BY date DESC LIMIT ?;', array( $userId, $limit));
+				$stmt = $this->_db->query($query.' ORDER BY date DESC LIMIT ?;', array( $userId, $limit));
+			}else{
+				// $stmt = $this->_db->query('SELECT * FROM article WHERE user_id = ? LIMIT ?;', array( $userId, $limit));
+				$stmt = $this->_db->query($query.' LIMIT ?;', array( $userId, $limit));
+			}
+			Application_Model_Logger::log('query: '.$query);
+			if ($stmt->rowCount() > 0) {
+				
+				$row = $stmt->fetchAll();
+
+				$res = array(
+					'articles' => $row,
+					'status' => true
+				);
+
+				ob_start();
+				var_dump($res);
+				$output = ob_get_clean();
+				$output = preg_replace("/\]\=\>\n(\s+)/m", "] => ", $output);
+				Application_Model_Logger::log('getArticles res: '.$output);
+
+			}
+
+			$stmt->close();
+
+		} catch (Exception $e) {
+			$res = array(
+				'error' => $e->getMessage(),
+				'status' => false
+			);
+		}
+		return $res;
+
+	}
+
+
+
+	# -------
 
 
 }
