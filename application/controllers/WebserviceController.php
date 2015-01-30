@@ -21,6 +21,12 @@ class WebserviceController extends Zend_Controller_Action {
 
         $request_data = $this->request->getParams();
 
+        ob_start();
+        var_dump($this->request);
+        $output = ob_get_clean();
+        $output = preg_replace("/\]\=\>\n(\s+)/m", "] => ", $output);
+        Application_Model_Logger::log($output);
+        
         $this->request_data = sanitizeNestedArrays($request_data);
 
         $this->checkHashAction();
