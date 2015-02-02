@@ -62,9 +62,17 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
 
         $router = $this->frontController->getRouter();
+        
+
         // $router->addRoute('main', new Zend_Controller_Router_Route('main/', array('controller' => 'index', 'action' => 'main')));
         $router->addRoute('bid', new Zend_Controller_Router_Route('bid/', array('controller' => 'index', 'action' => 'bid')));
         $router->addRoute('tasklist', new Zend_Controller_Router_Route('tasklist/', array('controller' => 'index', 'action' => 'tasklist')));
+
+
+        $router->addRoute('cart', new Zend_Controller_Router_Route('cart/', array('controller' => 'payment', 'action' => 'cart')));
+        $router->addRoute('shipping', new Zend_Controller_Router_Route('shipping/', array('controller' => 'payment', 'action' => 'shipping')));
+
+
         $router->addRoute('WS01', new Zend_Controller_Router_Route('/webservice/article', array('controller' => 'webservice', 'action' => 'article')));
         $router->addRoute('WS02', new Zend_Controller_Router_Route('/webservice/getarticles', array('controller' => 'webservice', 'action' => 'getarticles')));
     }
