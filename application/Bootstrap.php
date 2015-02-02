@@ -63,7 +63,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
         $router = $this->frontController->getRouter();
         // $router->addRoute('main', new Zend_Controller_Router_Route('main/', array('controller' => 'index', 'action' => 'main')));
-        // $router->addRoute('addarticle', new Zend_Controller_Router_Route('addarticle/', array('controller' => 'index', 'action' => 'addarticle')));
+        $router->addRoute('bid', new Zend_Controller_Router_Route('bid/', array('controller' => 'index', 'action' => 'bid')));
         $router->addRoute('tasklist', new Zend_Controller_Router_Route('tasklist/', array('controller' => 'index', 'action' => 'tasklist')));
         $router->addRoute('WS01', new Zend_Controller_Router_Route('/webservice/article', array('controller' => 'webservice', 'action' => 'article')));
         $router->addRoute('WS02', new Zend_Controller_Router_Route('/webservice/getarticles', array('controller' => 'webservice', 'action' => 'getarticles')));
@@ -75,7 +75,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
     	Application_Model_Logger::log('_initView');
     	// Initialize view
         $view = new Zend_View();
-        $view->headTitle('Webdesignerjun');
+        $view->headTitle('crazyBid');
 
         // Add it to the ViewRenderer
         $viewRenderer = Zend_Controller_Action_HelperBroker::getStaticHelper(

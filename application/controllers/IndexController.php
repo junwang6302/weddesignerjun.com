@@ -22,6 +22,12 @@ class IndexController extends Zend_Controller_Action
         // action body
     }
 
+    public function bidAction()
+    {
+        Application_Model_Logger::log('bidAction');
+        // action body
+    }
+
     
 
 }
