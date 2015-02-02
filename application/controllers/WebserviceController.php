@@ -27,7 +27,15 @@ class WebserviceController extends Zend_Controller_Action {
         $output = preg_replace("/\]\=\>\n(\s+)/m", "] => ", $output);
         Application_Model_Logger::log($output);
         
-        $this->request_data = sanitizeNestedArrays($request_data);
+        if (empty($request_data['stripslashes'])){
+            $request_data['stripslashes'] = true;
+        }
+
+        if (!$request_data['stripslashes']){
+            $this->request_data = sanitizeNestedArrays($request_data);
+        }else{
+            $this->request_data = $request_data;
+        }
 
         $this->checkHashAction();
         // getUserByHash
