@@ -22,6 +22,12 @@ class IndexController extends Zend_Controller_Action
         // action body
     }
 
+    public function articlelistAction()
+    {   
+        Application_Model_Logger::log('articlelistAction');
+        // action body
+    } 
+
     public function tasklistAction()
     {
     	Application_Model_Logger::log('tasklistAction');

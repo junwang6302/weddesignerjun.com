@@ -12,7 +12,7 @@ class ErrorController extends Zend_Controller_Action
             return;
         }
         
-        switch ($errors->type) {
+        switch ($errlors->type) {
             case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ROUTE:
             case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_CONTROLLER:
             case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION:
