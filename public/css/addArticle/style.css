@@ -1,0 +1,13 @@
+.articleArchiv .input-container {
+  text-align: center;
+  margin: 100px 0px 0px 0px; }
+.articleArchiv .save-btn-container {
+  margin: 40px; }
+.articleArchiv .btn:hover {
+  cursor: pointer; }
+.articleArchiv .subject-container {
+  height: 50px;
+  width: 80%;
+  margin: auto; }
+.articleArchiv .subject-input {
+  float: left; }
