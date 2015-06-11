@@ -32,6 +32,7 @@ class IndexController extends Zend_Controller_Action
     {   
         Application_Model_Logger::log('articleAction');
         // action body
+        $this->view->article_id = $this->getRequest()->getParam('id');
     }
 
     public function tasklistAction()
