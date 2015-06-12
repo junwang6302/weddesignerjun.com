@@ -113,6 +113,16 @@ class Application_Model_Article{
 			if (empty($userId)) throw new Exception('USER ID IS EMPTY.');
 			if (empty($articleId)) throw new Exception('ARTICLE ID IS EMPTY.');
 
+
+			$isArticlePublic = $this->isArticlePublic($articleId);
+
+			if ($isArticlePublic['status']){
+				$res = array(
+						'status' => true
+					);
+				return $res;
+			}
+
 			$stmt = $this->_db->query('SELECT id FROM article WHERE id = ? AND user_id = ? LIMIT 1;', array($articleId, $userId));
 
 			if ($stmt->rowCount() == 1) {
@@ -141,6 +151,42 @@ class Application_Model_Article{
 	}
 
 	# -------
+	public function isArticlePublic($articleId){
+		
+		$res = array();
+		
+		try {
+
+			if (empty($articleId)) throw new Exception('ARTICLE ID IS EMPTY.');
+			
+			$stmt = $this->_db->query('SELECT public FROM article WHERE id = ? LIMIT 1;', array($articleId));
+
+			if ($stmt->rowCount() == 1) {
+				$row = $stmt->fetch();
+				
+				if ($row['public'] == 1){
+					$res = array(
+						'status' => true
+					);
+				}else{
+					throw new Exception('ARTICLE '.$articleId.' IS NOT PUBLIC.');
+				}
+			}else{
+				throw new Exception('ARTICLE '.$articleId.' DOES NOT EXIST.');
+			}
+
+			$stmt->close();
+
+		} catch (Exception $e) {
+			$res = array(
+				'error' => $e->getMessage(),
+				'status' => false
+			);
+		}
+		return $res;
+	}
+
+	# -------
 	public function getArticle($userId, $articleId){
 		
 		$res = array();
@@ -152,7 +198,7 @@ class Application_Model_Article{
 			$hasArticle = $this -> hasArticle($userId, $articleId);
 			if (!$hasArticle['status']) throw new Exception($hasArticle['error']);
 
-			$stmt = $this->_db->query('SELECT * FROM `article` WHERE `id` = ? AND `user_id` = ? LIMIT 1;', array($articleId, $userId));
+			$stmt = $this->_db->query('SELECT * FROM `article` WHERE `id` = ? LIMIT 1;', array($articleId));
 
 			if ($stmt->rowCount() == 1) {
 				$row = $stmt->fetch();

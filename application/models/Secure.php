@@ -38,6 +38,12 @@ class Application_Model_Secure{
 		return $res;
 	}
 
+	# -------
+	public function isLoggedIn(){
+		//will add a login checking code, for now always return false.
+		return false;
+	}
+
 
 	# -------
 	public function getUserByHash($hash){

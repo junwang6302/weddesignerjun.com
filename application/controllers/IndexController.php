@@ -6,14 +6,17 @@ class IndexController extends Zend_Controller_Action
     public function init()
     {
         /* Initialize action controller here */
+        $secure = new Application_Model_Secure();
+
+        if (!$secure->isLoggedIn()){
+            $this->view->userHash = '123';
+        }
     }
 
     public function indexAction()
     {   
         Application_Model_Logger::log('indexAction');
         // action body
-        $secure = new Application_Model_Secure();
-
     }
 
     public function addarticleAction()

@@ -10,7 +10,7 @@
 
   getArtiles = function() {
     return $.ajax({
-      url: app.urls.getArticles + "?hash=456",
+      url: app.urls.getArticles + "?hash=" + window.userHash,
       type: "GET",
       dataType: "json",
       async: false,

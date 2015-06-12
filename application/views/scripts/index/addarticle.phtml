@@ -14,6 +14,9 @@
 	<link rel="stylesheet" href="css/lib/flat-ui.css" type="text/css" media="screen">
 	<link rel="stylesheet" href="css/mainPage/style.css" type="text/css" media="screen">
 	<link rel="stylesheet" href="css/addArticle/style.css" type="text/css" media="screen">
+	<script>
+		window.userHash = "<?php echo $this->userHash?>";
+	</script>
 </head>
 <body>
 
@@ -236,7 +239,6 @@
 
 	<script type="text/javascript">
 	window.teWidth = 0.8 * $('.input-container').width();
-	window.userHash = '456';
 	var textEditor = new TINY.editor.edit('editor',{
 		id:'input',
 		width:teWidth,

@@ -12,7 +12,9 @@
 	<link rel="stylesheet" href="css/mainPage/style.css" type="text/css" media="screen">
 	<script type="text/javascript" src="/js/lib/jquery.min.js"></script>
   <script type="text/javascript" src="/js/lib/angular.js"></script>
-
+  <script>
+    window.userHash = "<?php echo $this->userHash?>";
+  </script>
 </head>
 
 <body id="top" ng-app="articleListApp">
