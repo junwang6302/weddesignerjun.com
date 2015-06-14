@@ -58,7 +58,7 @@ class Application_Model_Article{
 	}
 
 	# -------
-	public function updateArticle($userId, $subject=null, $content=null, $date=null, $public=null, $articleId, $tag=null){
+	public function updateArticle($userId, $subject=null, $content=null, $date=null, $public=null, $articleId, $tags=null){
 		//NEED TO ADD CODE HERE -JUN
 		Application_Model_Logger::log('updateArticle action');
 		$res = array();
@@ -91,6 +91,10 @@ class Application_Model_Article{
 			if (($public == '0')||($public == '1')){
 				Application_Model_Logger::log('update public');
 				$stmt = $this->_db->query('UPDATE `article` SET `public`= ? WHERE `id`=? ;', array($public, $articleId));
+			}
+
+			if (!empty($tags)){
+				$addTag = $this -> addTag($this->_db->lastInsertId(), $tags);
 			}
 
 			$stmt->close();
