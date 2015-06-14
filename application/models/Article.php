@@ -13,7 +13,7 @@ class Application_Model_Article{
 	}
 
 	# -------
-	public function addArticle($userId, $subject, $content, $date=null, $public=false){
+	public function addArticle($userId, $subject, $content, $date=null, $public=false, $tags=null){
 		
 		$res = array();
 		
@@ -30,6 +30,12 @@ class Application_Model_Article{
 				$stmt = $this->_db->query('INSERT INTO `article` (`subject`, `content`, `date`,`user_id`, `public`) VALUES (?, ?, ?, ?, ?)', array($subject, $content, $date, $userId, '1'));
 			}else{
 				$stmt = $this->_db->query('INSERT INTO `article` (`subject`, `content`, `date`,`user_id`) VALUES (?, ?, ?, ?)', array($subject, $content, $date, $userId));
+			}
+
+			if (!empty($tags)){
+
+				$addTag = $this -> addTag($this->_db->lastInsertId(), $tags);
+				//NEED TO ADD addTag func -JUN
 			}
 
 			$stmt->close();
@@ -51,8 +57,8 @@ class Application_Model_Article{
 	}
 
 	# -------
-	public function updateArticle($userId, $subject=null, $content=null, $date=null, $public=null, $articleId){
-		
+	public function updateArticle($userId, $subject=null, $content=null, $date=null, $public=null, $articleId, $tag=null){
+		//NEED TO ADD CODE HERE -JUN
 		Application_Model_Logger::log('updateArticle action');
 		$res = array();
 		
@@ -186,6 +192,35 @@ class Application_Model_Article{
 		return $res;
 	}
 
+	# -------
+	public function addTag($articleId, $tags){
+		
+		$res = array();
+		
+		try {
+
+			if (empty($articleId)) throw new Exception('ARTICLE ID IS EMPTY.');
+
+			if (empty($tags)) throw new Exception('TAG IS EMPTY.');
+			
+			$tagList = explode(',', $tags);
+			
+			foreach($tagList as $tag) {
+				$stmt = $this->_db->query('INSERT INTO `tag` (`article_id`, `tag`) VALUES (?, ?);', array($articleId, $tag));
+		    }		
+
+			$stmt->close();
+
+		} catch (Exception $e) {
+			
+			Application_Model_Logger::log('CAN NOT ADD ARTICLE: '. $e->getMessage());
+			$res = array(
+				'error' =>'CAN NOT ADD ARTICLE: '. $e->getMessage(),
+				'status' => false
+			);
+		}
+		return $res;
+	}
 	# -------
 	public function getArticle($userId, $articleId){
 		

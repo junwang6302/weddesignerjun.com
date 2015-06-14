@@ -60,11 +60,7 @@ class WebserviceController extends Zend_Controller_Action {
             if (strlen($this->request_data['hash']) > 0) {
         
                 $res = $secure->getUserByHash($this->request_data['hash']);
-                ob_start();
-                var_dump($res);
-                $output = ob_get_clean();
-                $output = preg_replace("/\]\=\>\n(\s+)/m", "] => ", $output);
-                Application_Model_Logger::log("getUserByHash:".$output);
+                
             } else {
                 $res = array('status'=>false);
             }
@@ -174,27 +170,29 @@ class WebserviceController extends Zend_Controller_Action {
                 $this->request_data['date'] = date('Y-m-d H:i:s',$this->request_data['date']);
             }
 
-                if (empty($this->request_data['articleid'])){
-                    $res = $article -> addArticle(
-                        $this->userId,  
-                        $this->request_data['subject'], 
-                        $this->request_data['content'], 
-                        $this->request_data['date'], 
-                        $this->request_data['public']
-                    );
-                }else{
-                    $res = $article -> updateArticle(
-                        $this->userId,  
-                        $this->request_data['subject'], 
-                        $this->request_data['content'], 
-                        $this->request_data['date'], 
-                        $this->request_data['public'],
-                        $this->request_data['articleid']
-                    );
-                }  
-                
-                $this->res = $res;
-                $this->sendResponse();
+            if (empty($this->request_data['articleid'])){
+                $res = $article -> addArticle(
+                    $this->userId,  
+                    $this->request_data['subject'], 
+                    $this->request_data['content'], 
+                    $this->request_data['date'], 
+                    $this->request_data['public'],
+                    $this->request_data['tags']
+                );
+            }else{
+                $res = $article -> updateArticle(
+                    $this->userId,  
+                    $this->request_data['subject'], 
+                    $this->request_data['content'], 
+                    $this->request_data['date'], 
+                    $this->request_data['public'],
+                    $this->request_data['articleid'],
+                    $this->request_data['tags']
+                );
+            }  
+            
+            $this->res = $res;
+            $this->sendResponse();
 
         } else if($this->request->isPut()){
 
