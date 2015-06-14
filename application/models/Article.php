@@ -35,7 +35,8 @@ class Application_Model_Article{
 			if (!empty($tags)){
 
 				$addTag = $this -> addTag($this->_db->lastInsertId(), $tags);
-				//NEED TO ADD addTag func -JUN
+				
+				if (!$addTag['status']) throw new Exception('FAILED TO ADD TAG.');
 			}
 
 			$stmt->close();
@@ -193,6 +194,44 @@ class Application_Model_Article{
 	}
 
 	# -------
+	public function isTagged($articleId, $tag){
+		
+		$res = array();
+		
+		try {
+
+			// if (empty($articleId)) throw new Exception('ARTICLE ID IS EMPTY.');
+
+			// if (empty($tag)) throw new Exception('TAG IS EMPTY.');
+			
+			$stmt = $this->_db->query('SELECT tag FROM tag WHERE article_id = ? AND tag = ?;', array($articleId, $tag));
+
+			if ($stmt->rowCount() > 0) {
+				
+				$res = array(
+					'status' => true
+				);
+
+			}else{
+
+				$res = array(
+					'status' => false
+				);
+
+			}
+
+			$stmt->close();
+
+		} catch (Exception $e) {
+			$res = array(
+				'error' => $e->getMessage(),
+				'status' => false
+			);
+		}
+		return $res;
+	}
+
+	# -------
 	public function addTag($articleId, $tags){
 		
 		$res = array();
@@ -206,16 +245,22 @@ class Application_Model_Article{
 			$tagList = explode(',', $tags);
 			
 			foreach($tagList as $tag) {
-				$stmt = $this->_db->query('INSERT INTO `tag` (`article_id`, `tag`) VALUES (?, ?);', array($articleId, $tag));
+				
+				$isTagged = $this->isTagged($articleId, $tag);
+				
+				if (!$isTagged['status']){
+					$stmt = $this->_db->query('INSERT INTO `tag` (`article_id`, `tag`) VALUES (?, ?);', array($articleId, $tag));
+			    }
+
 		    }		
 
 			$stmt->close();
 
 		} catch (Exception $e) {
 			
-			Application_Model_Logger::log('CAN NOT ADD ARTICLE: '. $e->getMessage());
+			Application_Model_Logger::log('CAN NOT ADD TAG: '. $e->getMessage());
 			$res = array(
-				'error' =>'CAN NOT ADD ARTICLE: '. $e->getMessage(),
+				'error' =>'CAN NOT ADD TAG: '. $e->getMessage(),
 				'status' => false
 			);
 		}
