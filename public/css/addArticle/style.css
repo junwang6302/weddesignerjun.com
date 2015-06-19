@@ -6,8 +6,14 @@
 .articleArchiv .btn:hover {
   cursor: pointer; }
 .articleArchiv .subject-container {
-  height: 50px;
+  overflow: hidden;
   width: 80%;
   margin: auto; }
 .articleArchiv .subject-input {
   float: left; }
+.articleArchiv .tag-input {
+  float: right; }
+
+@media only screen and (max-width: 568px) {
+  .tag-input {
+    float: left !important; } }
