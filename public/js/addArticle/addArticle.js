@@ -16,7 +16,8 @@
       data: {
         hash: window.userHash,
         content: $('#input').val(),
-        subject: $('#subject-input').val()
+        subject: $('#subject-input').val(),
+        tags: $('#tag-input').val()
       },
       dataType: 'json',
       async: false,
