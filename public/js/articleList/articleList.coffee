@@ -4,7 +4,7 @@ app.urls =
   
 getArtiles = ->
   $.ajax
-    url: app.urls.getArticles+"?hash="+window.userHash
+    url: app.urls.getArticles+"?hash="+window.userHash+"&limit=50"
     type: "GET"
     dataType: "json"
     async: false
